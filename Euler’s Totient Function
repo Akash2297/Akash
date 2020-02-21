@@ -1,0 +1,57 @@
+#include<iostream>
+#include<iterator>
+#include<algorithm>
+#include<math.h>
+#include<vector>
+#include<stack>
+#include<string.h>
+#include<map>
+#include<bitset>
+#include<set>
+#include<deque>
+#include<queue>
+#include<list>
+#define ln 1000006
+#define pi acos(-1.0)
+#define pb push_back
+#define mp make_pair
+using namespace std;
+void display(int *ans,int num){
+    
+    for(int i=1;i<=num;i++){
+        cout<<"phi("<<i<<") = "<<ans[i]<<endl;
+    }
+}
+int GCD(int num1,int num2){
+    
+    if(num1==0){
+        return num2;
+    }
+    return GCD(num2%num1,num1);
+}
+void phifunction(int num){
+    
+    int ans[num+5];
+    
+    for(int i=1;i<=num;i++){
+        unsigned int result = 1;
+        for(int j=2;j<i;j++){
+            if(GCD(j,i)==1){
+                result++;
+            }
+        }
+        ans[i]=result;
+    }
+    display(ans,num);
+}
+int main()
+{
+    
+    int num;
+    cin>>num;
+    
+    phifunction(num);
+ 
+    return 0;
+}
+
