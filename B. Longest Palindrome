@@ -1,0 +1,101 @@
+#include<iostream>
+#include<iterator>
+#include<algorithm>
+#include<math.h>
+#include<vector>
+#include<stack>
+#include<string.h>
+#include<map>
+#include<bitset>
+#include<set>
+#include<deque>
+#include<queue>
+#include<list>
+#define ln 1000005
+#define pi acos(-1.0)
+#define pb push_back
+#define mp make_pair
+using namespace std;
+
+int main()
+{
+    int  t,len;
+    cin>>t>>len;
+    int temp1=t;
+    
+    char str[len+1];
+    vector<string>akash;
+    vector<string>ans[3];
+    
+    while(t--){
+        scanf("%s",str);
+        
+        akash.pb(str);
+    }
+    
+    for(int i=0;i<temp1;i++){
+        if(akash[i].compare("0")==0){
+            continue;
+        }
+        
+        string temp_str=akash[i];
+        reverse(temp_str.begin(),temp_str.end());
+        
+        if(temp_str.compare(akash[i])==0){
+            ans[1].pb(akash[i]);
+                               
+            replace(akash.begin(),akash.end(),akash[i],string{"0"});
+            continue;
+        }
+        
+        for(int j=0;j<temp1;j++){
+            if((akash[j].compare("0")==0) || i==j){
+                continue;
+            }
+
+            string temp_str=akash[j];
+            reverse(temp_str.begin(),temp_str.end());
+            if(temp_str.compare(akash[i])==0){
+            
+                ans[0].pb(akash[i]);
+                ans[2].pb(akash[j]);
+                    
+                replace(akash.begin(),akash.end(),akash[i],string{"0"});
+                replace(akash.begin(),akash.end(),akash[j],string{"0"});
+                break;
+            }
+            
+        }
+    }
+    
+    int total=0;
+    for(int i=0;i<ans[0].size();i++){
+        total+=ans[0][i].size();
+       
+    }
+    if(ans[1].size()!=0){
+        total+=ans[1][0].size();
+      
+    }
+    for(int i=ans[2].size()-1;i>=0;i--){
+        total+=ans[2][i].size();
+       
+    }
+    
+    cout<<total<<"\n";
+    for(int i=0;i<ans[0].size();i++){
+    
+        cout<<ans[0][i];
+    }
+    if(ans[1].size()!=0){
+    
+        cout<<ans[1][0];
+    }
+    for(int i=ans[2].size()-1;i>=0;i--){
+    
+        cout<<ans[2][i];
+    }
+    cout<<endl;
+ 
+    return 0;
+}
