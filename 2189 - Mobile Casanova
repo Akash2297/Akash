@@ -1,0 +1,64 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+long long akash[100010];
+
+int main(){
+    
+    int n,tc=0;
+    
+    while(true){
+        cin>>n;
+        if(n==0){
+            break;
+        }
+        
+        for(int i=0;i<n;i++){
+            cin>>akash[i];
+        }
+        tc++;
+        cout<<"Case "<<tc<<":\n";
+        
+        for(int i=0;i<n;i++){
+            if(akash[i+1] - akash[i] != 1){
+                cout<<"0"<<akash[i]<<"\n";
+            }
+            else{
+                int start=i;
+                int end=0;
+                for(int j=i;j<n;j++){
+                    if(akash[j+1] - akash[j] == 1){
+                        end=j+1;
+                    }
+                    else{
+                        i=end;
+                        break;
+                    }
+                }
+                cout<<"0"<<akash[start]<<"-";
+                string temp1;
+                string temp2;
+                temp1.clear();
+                temp2.clear();
+                
+                temp1=to_string(akash[start]);
+                temp2=to_string(akash[end]);
+                
+                long long len=temp1.size();
+                
+                for(int x=0;x<len;x++){
+                    if(temp1[x]!=temp2[x]){
+                        for(int y=x;y<len;y++){
+                            cout<<temp2[y];
+                        }
+                        break;
+                    }
+                }
+                cout<<"\n";
+            }
+            
+        }
+        cout<<"\n";
+    }
+    return 0;
+}
