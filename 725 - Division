@@ -1,0 +1,82 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+vector< pair<string,string> >ans[80];
+
+void  all_permutation(string a, int l, long int r){
+
+    if (l == r){
+        string s1,s2;
+        s1.clear();
+        s2.clear();
+        
+        for(int i=0;i<=4;i++){
+            s1+=a[i];
+        }
+        for(int i=5;i<=9;i++){
+            s2+=a[i];
+        }
+        
+        int x=0,y=0;
+        stringstream akash1(s1);
+        stringstream akash2(s2);
+        
+        akash1>>x;
+        akash2>>y;
+        
+        if(x>=y && x%y==0){
+            if(x/y>=2 && x/y<=79){
+                ans[x/y].push_back(make_pair(s1,s2));
+            }
+        }
+
+    }
+    else{
+        for (int i = l; i <= r; i++){
+            swap(a[l], a[i]);
+            all_permutation(a, l+1, r);
+            swap(a[l], a[i]);
+        }
+    }
+    
+}
+
+int main(){
+    
+    string str="0123456789";
+    long int len=str.size();
+    all_permutation(str,0,len-1);
+    
+    bool first=true;
+    
+    while(true){
+        int n;
+        cin>>n;
+        
+        if(n==0){
+            break;
+        }
+        
+        if (!first){
+          cout<<"\n";
+        }
+        
+        if(ans[n].size()==0){
+            cout<<"There are no solutions for "<<n<<".\n";
+        }
+        else{
+            long long temp_len=ans[n].size();
+            sort(ans[n].begin(),ans[n].end());
+            
+            for(int i=0;i<temp_len;i++){
+                cout<<ans[n][i].first;
+                cout<<" / ";
+                cout<<ans[n][i].second;
+                cout<<" = ";
+                cout<<n<<"\n";
+            }
+        }
+        first=false;
+    }
+    return 0;
+}
