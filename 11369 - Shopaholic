@@ -1,0 +1,114 @@
+/***************************************************************************************************
+                         Anzmaul Haque Akash
+                    DIU, Daffodil International University
+                    E-mail: anzamul15-2297@diu.edu.bd
+ Youtube: https://www.youtube.com/channel/UCXvXHUkxLYKeQkIg_RyMBw
+******************************************************************************************************/
+#include<bits/stdc++.h>
+
+#define ln     (int)1e6
+#define pi     acos(-1.0)
+#define pb     push_back
+#define pf     push_front 1
+#define mp     make_pair
+#define F      first
+#define S      second
+#define INF    1000000000000000000
+#define LES    -1000000000000000000
+#define intlim 2147483648
+#define ll     long long
+#define ull    unsigned long long
+#define str    string
+#define in     insert
+
+#define all(akash)       akash.begin(),akash.end()
+#define ms(arr)          memset(arr,0,sizeof(arr))
+#define msbooltrue(arr)  memset(arr,true,sizeof(arr))
+#define msboolfalse(arr) memset(arr,false,sizeof(arr))
+#define msINF(arr)       memset(arr,INF,sizeof(arr))
+#define case1(cs)        cout<<"Case "<<cs<<": "
+#define case2(cs)        cout<<"Case "<<cs<<":\n"
+#define lb               cout<<"\n";
+
+#define vec vector
+#define qu  queue
+#define li  list
+#define pq  priority_queue
+#define em  empty()
+
+#define fori(i,a,b) for(int i=0;i<b;i++)
+#define ford(i,a,b) for(int i=b-1;i>=0;i--)
+#define forc(ch);   for(char ch:str)
+
+#define sc1(a)         scanf("%lld",&a)
+#define sc2(a,b)       scanf("%lld %lld",&a,&b)
+#define sc3(a,b,c)     scanf("%lld %lld %lld",&a,&b,&c)
+#define sc4(a,b,c,d)   scanf("%lld %lld %lld %lld",&a,&b,&c,&d)
+#define sc5(a,b,c,d,e) scanf("%lld %lld %lld %lld %lld",&a,&b,&c,&d,&e)
+
+using namespace std;
+
+int main()
+{
+    ll test_case,cs;
+    cs=0;
+    sc1(test_case);
+    
+    while(test_case--){
+        ll n;
+        cin>>n;
+        
+        vec<ll>akash;
+        fori(i,0,n){
+            ll data;
+            cin>>data;
+            
+            akash.pb(data);
+        }
+        
+        if(n<3){
+            cout<<"0\n";
+        }
+        else{
+            sort(akash.begin(),akash.end(),greater<ll>());
+            ll ans=0;
+            ll temp;
+            while(akash.size()>=3){
+                
+                temp=INF;
+                
+                for(ll i=0;i<3;i++){
+                    if(temp>akash[0]){
+                        temp=akash[0];
+                    }
+                    akash.erase(akash.begin());
+                }
+                ans+=temp;
+            }
+            cout<<ans;lb
+        }
+    
+    }
+    return 0;
+}
+
+
+
+
+
+
+
+     
+
+
+ 
+
+
+
+ 
+
+   
+
+
+  
+
